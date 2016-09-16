@@ -128,4 +128,4 @@ In NYT_api.py, you can see the function `get_NYT_request` where I combine all ou
  The response send by the NY Times server is a string, with the format corresponding to a .json file. I now want to have access to information it contains.
 
 
-[signup]: https://github.com/AnnaVM/NYTimes_Variations/trending_not_trending/images/sign_up.png
+[signup]: https://github.com/AnnaVM/NYTimes_Variations/blob/master/trending_not_trending/images/sign_up.png "Screenshot of my sign up"
