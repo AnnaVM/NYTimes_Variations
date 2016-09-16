@@ -35,7 +35,8 @@ The following steps are very general and can apply to a lot of APIs:
 
 ### 2. Getting started
 
-1. **Useful libraries:** ($pip install library_name)
+#### 1. Useful libraries:
+($pip install library_name)
  - `yaml`(protect your keys and passwords)
  - `requests` (send a GET request to a server)
  - `json` (handle the '.json' format and import it in Python)
@@ -48,7 +49,8 @@ import json
 import math
 import csv
 ```
-2. **API Key registration:** (http://developer.nytimes.com/signup)
+#### 2. API Key registration:
+(http://developer.nytimes.com/signup)
   - enter your information and wait for the email with your code
 
   ![screenshot of my sign up ][signup]
@@ -69,7 +71,7 @@ import csv
     ```
 ### 3. Coding:
 
- 1. **Building the request url**
+#### 1. Building the request url
 
 ```Python
 ########    building the request url
@@ -83,7 +85,7 @@ response_format=".json"
 NYT_request_url = base_url+response_format
 ```
 
-2. **Sending the GET request**
+#### 2. Sending the GET request
 
  - search parameters: look up the stucture in the documentation. As an overview, I listed the parameters I will be using.
 
@@ -121,9 +123,9 @@ print(r.text)
 
 In NYT_api.py, you can see the function `get_NYT_request` where I combine all our building blocks.
 
- 3. **Formatting the raw response**
+#### 3. Formatting the raw response
 
  The response send by the NY Times server is a string, with the format corresponding to a .json file. I now want to have access to information it contains.
 
 
-[signup]: https://github.com/AnnaVM/NYTimes_Variations/trending_not_trending/images "Screenshot of my sign up"
+[signup]: https://github.com/AnnaVM/NYTimes_Variations/trending_not_trending/images/sign_up.png "Screenshot of my sign up"
