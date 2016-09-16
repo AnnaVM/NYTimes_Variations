@@ -36,7 +36,7 @@ The following steps are very general and can apply to a lot of APIs:
 ### 2. Getting started
 
 #### 1. Useful libraries:
-($pip install library_name)
+`$ pip install library_name`
  - `yaml`(protect your keys and passwords)
  - `requests` (send a GET request to a server)
  - `json` (handle the '.json' format and import it in Python)
@@ -53,7 +53,7 @@ import csv
 (http://developer.nytimes.com/signup)
   - enter your information and wait for the email with your code
 
-  ![screenshot of my sign up ][signup]
+  ![screenshot of my sign up][signup]
 
   - getting the credential file ready for `yaml`
     in credentials.yml saved in a separate file
@@ -128,4 +128,4 @@ In NYT_api.py, you can see the function `get_NYT_request` where I combine all ou
  The response send by the NY Times server is a string, with the format corresponding to a .json file. I now want to have access to information it contains.
 
 
-[signup]: https://github.com/AnnaVM/NYTimes_Variations/trending_not_trending/images/sign_up.png "Screenshot of my sign up"
+[signup]: https://github.com/AnnaVM/NYTimes_Variations/trending_not_trending/images/sign_up.png
