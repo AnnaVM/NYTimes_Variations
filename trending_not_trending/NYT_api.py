@@ -10,6 +10,7 @@ import math
 import csv
 import matplotlib.pyplot as plt #for visualization
 import numpy as np
+import argparse
 
 def get_NYT_request(search_term, begin_year, end_year, page=0,
                 path_to_credentials='../../credentials/credentials.yml'):
@@ -157,10 +158,25 @@ def plot_trend(start_year, end_year,
 if __name__ == '__main__':
     # define the path to the credentials
     path_to_cred_file = '../../credentials/credentials.yml'
+
+    # retrieve the information from the command line
+    # for ex: $ python NYT_api.py 'Donald Trump' 1999 2015
+    parser = argparse.ArgumentParser(description='Get the evolution of popularity over time')
+    parser.add_argument('query_term', metavar='q', type=str, nargs='+',
+                        help='a string used as the search term for the query')
+    parser.add_argument('start_year', metavar='year_range_start', type=int,
+                        help='the year as INT that marks the earliest year queried')
+
+    parser.add_argument('end_year', metavar='year_range_end', type=int,
+                        help='the year as INT that marks the latest year queried')
+
+    args = parser.parse_args()
+
     #search parameters
-    terms = 'Donald Trump'
-    year_start = 2000
-    year_end = 2015
+    terms = args.query_term[0]
+    year_start = args.start_year
+    year_end = args.end_year
+
     list_of_hits = find_trend(start_year=year_start, end_year=year_end, search_term=terms,
                     path_to_credentials=path_to_cred_file)
 

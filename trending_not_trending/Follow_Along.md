@@ -175,23 +175,45 @@ plt.show()
 This plotting option is given by the function `plot_trend`
 
 **Outcome for search term 'Donald Trump', years 2000-2015**
+
+
+Running the script in the terminal `$python NYT_api.py 'Donald Trump' 2000 2015` gives:
+
+![trend for Donald Trump][donald_trump]
+
+The following code needed to be added:
+
 ```Python
+import argparse #retrieve information from command line
+
 if __name__ == '__main__':
     # define the path to the credentials
     path_to_cred_file = '../../credentials/credentials.yml'
+
+    # retrieve the information from the command line
+    # for ex: $ python NYT_api.py 'Donald Trump' 1999 2015
+    parser = argparse.ArgumentParser(description='Get the evolution of popularity over time')
+    parser.add_argument('query_term', metavar='q', type=str, nargs='+',
+                        help='a string used as the search term for the query')
+    parser.add_argument('start_year', metavar='year_range_start', type=int,
+                        help='the year as INT that marks the earliest year queried')
+
+    parser.add_argument('end_year', metavar='year_range_end', type=int,
+                        help='the year as INT that marks the latest year queried')
+
+    args = parser.parse_args()
+
     #search parameters
-    terms = 'Donald Trump'
-    year_start = 2000
-    year_end = 2015
+    terms = args.query_term[0]
+    year_start = args.start_year
+    year_end = args.end_year
+
     list_of_hits = find_trend(start_year=year_start, end_year=year_end, search_term=terms,
                     path_to_credentials=path_to_cred_file)
 
     plot_trend(year_start, year_end, terms, list_of_hits)
 ```
 
-Running the script in the terminal `$python NYT_api.py` gives the following output:
-
-![trend for Donal Trump][donald_trump]
 
 ### 4. Going further
 
