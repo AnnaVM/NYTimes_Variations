@@ -1,7 +1,34 @@
 # Follow Along
 
 *Teaching Aims*
+- Query an IP: using NY Times API
+  - learn to structure the url to send the query,
+  - learn how to send a GET request,
+  - learn how to extract relevant information
 
+- In Python:
+  - import credentials through `yaml` package
+  - use the `requests`package to send GET requests
+  - format the raw information with `json`package to extract the right values
+  - parse arguments from the command line with `argparse` package
+
+--------
+Structure
+  1. Useful Background Information
+      - What is an API?
+      - What is a RESTful API?
+      - What information can I find on an API?
+      - How does an API work?
+  2. Getting started
+      - 2.1. Useful libraries
+      - 2.2. API Key registration
+  3. Coding
+      - 3.1. Building the request url
+      - 3.2. Sending the GET request
+      - 3.3. Formatting the raw response
+      - 3.4. Visualizing the trends
+  4. Going further
+--------
 ### 1. Useful Background Information
 > **- What is an API?**
 
@@ -35,7 +62,7 @@ The following steps are very general and can apply to a lot of APIs:
 
 ### 2. Getting started
 
-#### 1. Useful libraries:
+#### 2.1. Useful libraries
 `$ pip install library_name`
  - `yaml`(protect your keys and passwords)
  - `requests` (send a GET request to a server)
@@ -46,7 +73,7 @@ import yaml
 import requests
 import json
 ```
-#### 2. API Key registration:
+#### 2.2. API Key registration
 (http://developer.nytimes.com/signup)
   - enter your information and wait for the email with your code
 
@@ -68,7 +95,7 @@ import json
     ```
 ### 3. Coding:
 
-#### 1. Building the request url
+#### 3.1. Building the request url
 
 ```Python
 ########    building the request url
@@ -82,7 +109,7 @@ response_format=".json"
 NYT_request_url = base_url+response_format
 ```
 
-#### 2. Sending the GET request
+#### 3.2. Sending the GET request
 
  - search parameters: look up the stucture in the documentation. As an overview, I listed the parameters I will be using.
 
@@ -121,7 +148,7 @@ print(r.text)
 
 In NYT_api.py, you can see the function `get_NYT_request` where I combine all our building blocks.
 
-#### 3. Formatting the raw response
+#### 3.3. Formatting the raw response
 
  The response send by the NY Times server is a string, with the format corresponding to a .json file. I now want to have access to information it contains. I convert the .json into a Python dictionary (with nested dictionaries) and access the relevant values by figuring out which keys to call (here `'response'`,`'meta'` and `'hits'`).
  NB. So far, I only have the 10 of all the results displayed, corresponding to page 0 of the request.
@@ -136,7 +163,7 @@ hits = data['response']['meta']['hits']
 ```
 In NYT_api.py, you can see the function `extract_num_hits` where I combine all our building blocks.
 
-#### 4. Visualizing the trends
+#### 3.4. Visualizing the trends
 
 - First I want to generate a list of the number of hits over the years I am interested in. This is a perfect job for a `for` loop, that is then included in the function `find_trend`.
 
@@ -174,7 +201,7 @@ plt.show()
 ```
 This plotting option is given by the function `plot_trend`
 
-**Outcome for search term 'Donald Trump', years 2000-2015**
+$\longrightarrow$ **Outcome for search term 'Donald Trump', years 2000-2015**
 
 
 Running the script in the terminal `$python NYT_api.py 'Donald Trump' 2000 2015` gives:
@@ -217,6 +244,7 @@ if __name__ == '__main__':
 
 ### 4. Going further
 
+#### 4.1. Traverse all the pages
 get all the data from all the pages
 save the data in csv
 get keywords
