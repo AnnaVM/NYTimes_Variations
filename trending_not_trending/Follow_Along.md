@@ -13,7 +13,7 @@
   - parse arguments from the command line with `argparse` package
 
 --------
-Structure
+*Structure*
   1. Useful Background Information
       - What is an API?
       - What is a RESTful API?
@@ -29,6 +29,7 @@ Structure
       - 3.4. Visualizing the trends
   4. Going further
 --------
+
 ### 1. Useful Background Information
 > **- What is an API?**
 
@@ -245,9 +246,13 @@ if __name__ == '__main__':
 ### 4. Going further
 
 #### 4.1. Traverse all the pages
-get all the data from all the pages
-save the data in csv
-get keywords
+For the moment, I am only retrieving page 0 of the results, as the global number of hits for the query was available. I know want to be able to gather all the data, for all the hits.
+
+The function `get_all_NYT_data` returns the 'doc' part of the response 
+
+#### 4.2. Save the data in csv
+
+#### 4.3. Extract the keywords
 get frequency of keywords
 
 [signup]: https://github.com/AnnaVM/NYTimes_Variations/blob/master/trending_not_trending/images/sign_up.png "Screenshot of my sign up"
