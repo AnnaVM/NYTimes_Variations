@@ -191,7 +191,7 @@ if __name__ == '__main__':
 
 Running the script in the terminal `$python NYT_api.py` gives the following output:
 
-    ![trend for Donal Trump][donald_trump]
+![trend for Donal Trump][donald_trump]
 
 ### 4. Going further
 
