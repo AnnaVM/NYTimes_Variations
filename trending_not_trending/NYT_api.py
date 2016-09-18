@@ -1,16 +1,16 @@
-'''the credentials are stored in ./credentials/credentials.yml, please update
-the path to the file on line 11 (beginning of the code).
+'''the credentials are stored in ../../credentials/credentials.yml, please update
+the path to the file on line 163 (beginning of the if __name__ == '__main__':).
 .yml format: the key used is 'NYT_api_key'
 '''
 
 import yaml
 import requests
 import json
-import math
-import csv
+
 import matplotlib.pyplot as plt #for visualization
 import numpy as np
-import argparse
+
+import argparse #for command line
 
 def get_NYT_request(search_term, begin_year, end_year, page=0,
                 path_to_credentials='../../credentials/credentials.yml'):
@@ -155,99 +155,7 @@ def plot_trend(start_year, end_year,
         plt.show()
     return fig
 
-def get_all_NYT_data(search_term, begin_year, end_year,
-                path_to_credentials='../../credentials/credentials.yml',
-                verbose=True):
 
-    '''
-    caveat: we are not taking into account the fact that NY Times will not give
-            more than a certain number of results
-
-    parameters:
-    -----------
-    search_term: as STR
-                query term on which the search is performed on the
-                article body, headline and byline
-    begin_year: as INT
-                year that restricts responses to results with publication dates
-                of the year specified or later.
-    end_year: as INT
-                year that restricts responses to results with publication dates
-                of the year specified or earlier.
-    path_to_credentials: as STR
-                path to the .yml file with the API key stored in the following
-                format: NYT_api_key: + space + NYT issued code
-                defaults to file credentials outside of the NYT project
-    verbose: as BOOL, defaults to True
-                prints status information in the terminal
-
-    returns:
-    --------
-    data: a list of the docs
-    '''
-    ########    authentification
-    # define the path to the credentials
-    path_to_file = path_to_credentials
-    credentials = yaml.load(open(path_to_file))
-
-    ########    building the request url
-    # define the base url
-    base_url="http://api.nytimes.com/svc/search/v2/articlesearch"
-
-    # choose response format (here, Article Search API outputs .json)
-    response_format=".json"
-
-    # make the url
-    NYT_request_url = base_url+response_format
-
-    ########    Prepare the GET request
-    # ensure authentification
-    NYT_api_key = credentials['NYT_api_key']
-
-    # define the search parameters:
-    search_params = {'q': search_term,
-                     'begin_date': str(begin_year)+'0101',
-                     'end_date': str(end_year)+'1231',
-                     'api-key': NYT_api_key}
-
-    ########    Look for the number of hits, and therefore pages to go through
-    # make the first request
-    r = requests.get(NYT_request_url, params=search_params)
-
-    # convert .json result to a dictionary
-    data=json.loads(r.text)
-
-    # extract number of hits
-    hits = data['response']['meta']['hits']
-    if verbose:
-        print("number of hits: ", str(hits))
-
-    # find the number of pages
-    num_pages = int(math.ceil(hits/10))
-
-    ########    Gather all the documents
-    all_docs = []
-
-    for num_page in range(num_pages):
-        if verbose:
-            print("collecting page", str(num_page))
-
-        # set the page parameter in the search term
-        search_params['page'] = num_page
-
-        # make request for that specific page
-        r = requests.get(base_url+response_format, params=search_params)
-
-        # convert to a dictionary
-        data = json.loads(r.text)
-
-        # extract the docs
-        docs = data['response']['docs']
-
-        # add those docs to the big list
-        all_docs.append(docs)
-
-    return all_docs
 
 if __name__ == '__main__':
     # define the path to the credentials

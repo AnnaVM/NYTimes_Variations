@@ -28,6 +28,8 @@
       - 3.3. Formatting the raw response
       - 3.4. Visualizing the trends
   4. Going further
+      - 4.1. Traverse all the pages
+
 --------
 
 ### 1. Useful Background Information
@@ -151,7 +153,7 @@ In NYT_api.py, you can see the function `get_NYT_request` where I combine all ou
 
 #### 3.3. Formatting the raw response
 
- The response send by the NY Times server is a string, with the format corresponding to a .json file. I now want to have access to information it contains. I convert the .json into a Python dictionary (with nested dictionaries) and access the relevant values by figuring out which keys to call (here `'response'`,`'meta'` and `'hits'`).
+ The response send by the NY Times server is a string, with the format corresponding to a .json file. I now want to have access to information it contains. I convert the .json into a Python dictionary (`data`) with 3 keys (`['status', 'response', 'copyright']`). It turns out `data` has nested dictionaries: `data['response']` for instance is itself a dictionary with 2 keys (`['meta', 'docs']`). We can access the relevant values by figuring out which keys to call (here `'response'`,`'meta'` and `'hits'`).
  NB. So far, I only have the 10 of all the results displayed, corresponding to page 0 of the request.
 
 ```Python
@@ -245,15 +247,29 @@ if __name__ == '__main__':
 
 ### 4. Going further
 
+The code to achieve these extra steps is stored in NYT_api_advanced.py. I will not be explaining all the steps as throughly as before, but will endeavour the give main steps.
+
 #### 4.1. Traverse all the pages
 For the moment, I am only retrieving page 0 of the results, as the global number of hits for the query was available. I know want to be able to gather all the data, for all the hits.
 
-The function `get_all_NYT_data` returns the 'doc' part of the response 
+The function `get_all_NYT_data` returns the number of hits as well as the 'doc' part of the responses, with a max of 100 pages set by the NYT API. I have not delt with the issue of exceeding there request limitations.
 
-#### 4.2. Save the data in csv
+#### 4.2. Extract the keywords
+`extract_info` the list of keywords for a given year (as they are in various nested dictionaries in the raw data)
 
-#### 4.3. Extract the keywords
-get frequency of keywords
+`regroup_wanted_data` per year all the keywords used
+
+`wraper_function_data` returns the information needed for the app     dictionnary where keys are the years in the time range
+                      values are the number of hits for the query that year
+    dictionnary where keys are the years in the time range
+                      values are lists of the keywords found that year
+
+  issue of keywords composed of multiple words
+  `handle_multiple_words`
+
+#### 4.3. Make the wordclouds
+`produce_wordclouds`
+  by rank
 
 [signup]: https://github.com/AnnaVM/NYTimes_Variations/blob/master/trending_not_trending/images/sign_up.png "Screenshot of my sign up"
 [donald_trump]: https://github.com/AnnaVM/NYTimes_Variations/blob/master/trending_not_trending/images/trend_donald_trump.png "Bar graph for the trend in search term Donald Trump"
