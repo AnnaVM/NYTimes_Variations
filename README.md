@@ -27,3 +27,6 @@ command line: `$ python NYT_api_advanced 'Data Science' 2010 2016`
 Page: https://annavm.github.io/NYTimes_Variations/trending_not_trending/example_0/
 
 Screenshot: ![Screenshot of example_0][ex_0]
+
+
+[ex_0]: https://github.com/AnnaVM/NYTimes_Variations/blob/master/trending_not_trending/images/plotly_Data_Science.png "Screenshot for the interactive bar graph for the trend in search term Data Science from 2010 to 2016"
