@@ -2,7 +2,7 @@
 
 **AIM:** Investigating the evolution of the popularity of a term, as the number of hits over the years for the search term on the NY Times API.
 
-**OUPUT:** Interactive bar chart of the number of hits over the years with a wordcloud on hover action to give the keywords most often associated with the articles retrieved.
+**OUPUT:** Write a script to obtain an interactive bar chart of the number of hits over the years with a wordcloud on hover action to give the keywords most often associated with the articles retrieved.
 
 **USAGE:**
 
