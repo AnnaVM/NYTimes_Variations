@@ -12,6 +12,12 @@ import numpy as np
 from wordcloud import WordCloud
 from collections import defaultdict
 
+import StringIO #saving image as text for Javascript
+import base64
+
+import plotly.plotly as py
+import plotly.graph_objs as go
+
 def get_all_NYT_data(search_term, begin_year, end_year,
                 path_to_credentials='../../credentials/credentials.yml',
                 verbose=True):
@@ -222,3 +228,225 @@ def produce_wordclouds(d_value_as_string, plot_option=True):
         if plot_option: plt.show()
         dict_figs[year] = fig
     return dict_figs
+
+#####################    interactive bar graph
+#### adapted from
+#### https://github.com/etpinard/plotly-dashboards/tree/master/hover-images
+
+def save_images_as_str(dict_figs):
+    '''
+    parameters
+    ----------
+    dict_figs: as DICT
+                key is the year
+                value is the wordcloud stored in matplotlib figure
+
+    returns
+    -------
+    dict_str: as DICT
+            key is the year
+            value is the wordcloud stored as a string
+    '''
+    dict_str = {}
+    for year in dict_figs:
+        fig = dict_figs[year]
+        output = StringIO.StringIO()
+        fig.savefig(output)
+
+        encoded_string = base64.b64encode(output.getvalue())
+        dict_str[year] = encoded_string
+    return dict_str
+
+def for_js_dictionary(dict_str):
+    '''
+    for the main.js, a Javascript dictionary structure is needed to link the bars to an image
+       'year-2014': 'data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAA ... ==',
+       'year-2015': 'data:image/jpeg;base64,iVBORw0 ...',
+
+    parameters
+    ----------
+    dict_str: as DICT
+        key is the year
+        value is the wordcloud stored as a string
+
+    returns
+    -------
+    STR, with the text for the Javascript dictionary
+    '''
+    middle_str = ''
+    for year in dict_str:
+        temp_str = '''   'year-''' + str(year) + '''': 'data:image/jpeg;base64,''' + dict_str[year] +'''',
+        '''
+        middle_str += temp_str
+    return middle_str
+
+def plotly_url(start_year, end_year, dict_hits):
+    '''
+    generates the url for the bar chart
+    start_year and end_year must be included in dict_hits.keys()
+
+    dict_hits as DICT
+              key is year, value is the hits for that year
+    '''
+    #####  data
+    # x-values
+    range_years = range(start_year, end_year + 1)
+    years_string = ['year ' + str(year) for year in range_years]
+
+    # y-values
+    list_of_hits = [dict_hits[year] for year in range_years]
+
+    data = [go.Bar(
+                x=years_string,
+                y=list_of_hits
+        )]
+
+    layout = go.Layout(
+        xaxis=dict(tickangle=-45)
+    )
+
+    #### get fig
+    fig = go.Figure(data=data, layout=layout)
+    plot_url = py.plot(fig)
+    return plot_url
+
+def writing_js_file(dict_str, filename='main.js'):
+    '''
+    writes the main.js file necessary for plotly interactivity with images on hover
+    '''
+
+    top_part = '''(function main() {
+
+    var Plot = {
+        id: 'plot',
+        imgId: 'hover-image',
+        domain: 'https://plot.ly'
+    };
+
+    Plot.iframe = document.getElementById(Plot.id);
+    Plot.graphContentWindow = Plot.iframe.contentWindow;
+
+    Plot.hoverImg = document.getElementById(Plot.imgId);
+
+    Plot.init = function init() {
+        var pinger = setInterval(function() {
+            Plot.post({task: 'ping'});
+        }, 500);
+
+        function messageListener(e) {
+            var message = e.data;
+
+            if(message.pong) {
+                console.log('Initial pong, frame is ready to receive');
+                clearInterval(pinger);
+
+                Plot.post({
+                    'task': 'listen',
+                    'events': ['hover']
+                });
+            }
+            else if(message.type === 'hover') {
+                Plot.onHover(message);
+            }
+        }
+
+        window.removeEventListener('message', messageListener);
+        window.addEventListener('message', messageListener);
+    };
+
+    Plot.post = function post(o) {
+        Plot.graphContentWindow.postMessage(o, Plot.domain);
+    };
+
+    var artistToUrl = {
+    '''
+
+    middle_part = for_js_dictionary(dict_str)
+
+    bottom_part = '''};
+
+    var blankImg = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
+
+    Plot.onHover = function(message) {
+        var artist = message.points[0].x
+            .toLowerCase()
+            .replace(/ /g, '-');
+
+        var imgSrc = blankImg;
+
+        if(artistToUrl[artist] !== undefined) imgSrc = artistToUrl[artist];
+
+        Plot.hoverImg.src = imgSrc;
+    };
+
+    Plot.init();
+
+    })();
+    '''
+    with open(filename, 'w') as f:
+        f.write(top_part + middle_part + bottom_part)
+    return top_part + middle_part + bottom_part
+
+def writing_html_file(plotly_url, js_file, filename='index.html'):
+    '''
+    writes the index.html file necessary for plotly interactivity with images on hover
+    '''
+
+    style_content = '''
+    <!DOCTYPE html>>
+    <style>
+    /* http://stackoverflow.com/questions/11555809/image-overhead-iframe */
+    iframe{
+      width: 1000px;
+      height: 600px;
+      border : none;
+      z-index: 2;
+    }
+
+    img{
+      position: absolute;
+      left: 400px;
+      top: 130px;
+      z-index: 3;
+      border : none;
+      max-width: 400px;
+      max-height: 300px;
+      align: "middle";
+    }
+    </style>'''
+
+    body_content = '''
+    <body>
+
+    <iframe id="plot" src="{}" seamless></iframe>
+
+    <!-- http://stackoverflow.com/questions/11555809/image-overhead-iframe -->
+    <img id="hover-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
+
+    <script src='{}'></script>
+
+    </body>
+
+    '''.format(plotly_url, js_file)
+
+    content = style_content + body_content
+    with open(filename, 'w') as f:
+        f.write(content)
+    return content
+
+if __name__ == '__main__':
+    #plotly.tools.set_credentials_file(username='AnnaVM', api_key='****')
+    print ('getting the data from NYT API')
+    dict_hits, d_keywords = wraper_function_data(2005, 2016, 'Terrorism')
+    print ('making the wordclouds')
+    d_linked_keywords = handle_multiple_words(d_keywords)
+    dict_figs = produce_wordclouds(d_linked_keywords)
+    dict_str = save_images_as_str(dict_figs)
+    print('making the bar chart')
+    url = plotly_url(2005, 2015, dict_hits)
+    print ('preparing files')
+    writing_js_file(dict_str, 'main_3.js')
+    writing_html_file(url, 'main_3.js', 'index_3.html')
+
+    print ('in order to have the js execute, run the html on a local server')
+    print ('command in terminal $python -m SimpleHTTPServer')
