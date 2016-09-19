@@ -145,7 +145,9 @@ def regroup_wanted_data(all_docs):
 
     return dict_keywords
 
-def wraper_function_data(start_year, end_year, search_term, verbose=False):
+def wraper_function_data(start_year, end_year, search_term,
+                        path_to_credentials='../../credentials/credentials.yml',
+                         verbose=False):
     '''
     parameters
     ----------
@@ -169,7 +171,9 @@ def wraper_function_data(start_year, end_year, search_term, verbose=False):
     all_docs = []
     for year in range(start_year, end_year+1):
         if verbose: print ('year {}'.format(year))
-        hits, docs = get_all_NYT_data(search_term, year, year, verbose=False)
+        hits, docs = get_all_NYT_data(search_term, year, year,
+                                    path_to_credentials = path_to_credentials,
+                                    verbose=False)
         dict_hits[year] = hits
         all_docs += docs
 
@@ -463,7 +467,8 @@ if __name__ == '__main__':
     year_end = args.end_year
 
     print ('getting the data from NYT API')
-    dict_hits, d_keywords = wraper_function_data(year_start, year_end, terms)
+    dict_hits, d_keywords = wraper_function_data(year_start, year_end,
+                                terms, path_to_cred_file)
     print ('making the wordclouds')
     d_linked_keywords = handle_multiple_words(d_keywords)
     dict_figs = produce_wordclouds(d_linked_keywords, plot_option=False)

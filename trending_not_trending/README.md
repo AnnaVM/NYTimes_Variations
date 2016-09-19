@@ -54,4 +54,8 @@ Two python files are available **NYT_api.py** and **NYT_api_advanced.py**.
 
 - **NYT_api.py** is meant to be an introduction to APIs and the different programming steps (setting up credentials, parsing arguments, sending a GIT request...) are detailled in the accompanying markdown **Follow_Along.md**.
 
-- **NYT_api_advanced.py** is the file containing the code necessary to obtain the interactive bar graphs. A Jupyter Notebook 'Explore.ipynb' is available if you want to explore the various functions for yourself.
+- **NYT_api_advanced.py** is the file containing the code necessary to obtain the interactive bar graphs. A Jupyter Notebook **Explore.ipynb** is available if you want to explore the various functions for yourself.
+
+Great GitHub repositories that I used in this project:
+- https://github.com/amueller/word_cloud
+- https://github.com/etpinard/plotly-dashboards/tree/master/hover-images
