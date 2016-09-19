@@ -253,7 +253,7 @@ def save_images_as_str(dict_figs):
     for year in dict_figs:
         fig = dict_figs[year]
         output = StringIO.StringIO()
-        fig.savefig(output)
+        fig.savefig(output, transparent=True, bbox_inches='tight')
 
         encoded_string = base64.b64encode(output.getvalue())
         dict_str[year] = encoded_string
