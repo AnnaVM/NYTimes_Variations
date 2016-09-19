@@ -440,7 +440,7 @@ if __name__ == '__main__':
     dict_hits, d_keywords = wraper_function_data(2005, 2016, 'Terrorism')
     print ('making the wordclouds')
     d_linked_keywords = handle_multiple_words(d_keywords)
-    dict_figs = produce_wordclouds(d_linked_keywords)
+    dict_figs = produce_wordclouds(d_linked_keywords, plot_option=False)
     dict_str = save_images_as_str(dict_figs)
     print('making the bar chart')
     url = plotly_url(2005, 2015, dict_hits)
