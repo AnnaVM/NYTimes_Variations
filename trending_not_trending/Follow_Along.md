@@ -29,6 +29,9 @@
       - 3.4. Visualizing the trends
   4. Going further
       - 4.1. Traverse all the pages
+      - 4.2. Extract keywords
+      - 4.3. Interactive bar chart
+      - 4.4. Image on hover
 
 --------
 
@@ -247,29 +250,37 @@ if __name__ == '__main__':
 
 ### 4. Going further
 
-The code to achieve these extra steps is stored in NYT_api_advanced.py. I will not be explaining all the steps as throughly as before, but will endeavour the give main steps.
+The code to achieve these extra steps is stored in NYT_api_advanced.py. I will not be explaining all the steps as throughly as before, but will endeavour the give main steps. The **Explore.ipynb** allows you to explore these functions and see the steps.
 
 #### 4.1. Traverse all the pages
 For the moment, I am only retrieving page 0 of the results, as the global number of hits for the query was available. I know want to be able to gather all the data, for all the hits.
 
-The function `get_all_NYT_data` returns the number of hits as well as the 'doc' part of the responses, with a max of 100 pages set by the NYT API. I have not delt with the issue of exceeding there request limitations.
+The function `get_all_NYT_data` returns the number of hits as well as the 'doc' part of the responses, with a max of 100 pages set by the NYT API. I have not dealt with the issue of exceeding there request limitations.
 
 #### 4.2. Extract the keywords
 `extract_info` the list of keywords for a given year (as they are in various nested dictionaries in the raw data)
 
 `regroup_wanted_data` per year all the keywords used
 
-`wraper_function_data` returns the information needed for the app     dictionnary where keys are the years in the time range
+`wraper_function_data` returns the information needed for the graph     
+    - dictionnary where keys are the years in the time range
                       values are the number of hits for the query that year
-    dictionnary where keys are the years in the time range
+    - dictionnary where keys are the years in the time range
                       values are lists of the keywords found that year
 
-  issue of keywords composed of multiple words
-  `handle_multiple_words`
+`handle_multiple_words`  issue of keywords composed of multiple words
 
-#### 4.3. Make the wordclouds
-`produce_wordclouds`
-  by rank
+
+`produce_wordclouds` produces a wordcloud thanks to a specific python package
+
+#### 4.3. Interactive Bar Chart
+`plotly_url` I used plotly to make an interactive bar graph. Many options (plotly, brokeh, mpld3...) are available, but I wanted to use a specific example from a GitHub repository (https://github.com/etpinard/plotly-dashboards/tree/master/hover-images)
+
+#### 4.4. Image on hover
+I want the wordcloud to appear when I hover over the bar corresponding to the hits in a particular year. I need to write an html script with javascript associated file
+- `save_images_as_str` encoding figures to text
+- `for_js_dictionary` and `writing_js_file`: make the 'main.js' file
+- `writing_html_file` make the final html script
 
 [signup]: https://github.com/AnnaVM/NYTimes_Variations/blob/master/trending_not_trending/images/sign_up.png "Screenshot of my sign up"
 [donald_trump]: https://github.com/AnnaVM/NYTimes_Variations/blob/master/trending_not_trending/images/trend_donald_trump.png "Bar graph for the trend in search term Donald Trump"
