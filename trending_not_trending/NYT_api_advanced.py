@@ -18,6 +18,8 @@ import base64
 import plotly.plotly as py
 import plotly.graph_objs as go
 
+import argparse #for command line
+
 def get_all_NYT_data(search_term, begin_year, end_year,
                 path_to_credentials='../../credentials/credentials.yml',
                 verbose=True):
@@ -435,18 +437,42 @@ def writing_html_file(plotly_url, js_file, filename='index.html'):
     return content
 
 if __name__ == '__main__':
-    #plotly.tools.set_credentials_file(username='AnnaVM', api_key='****')
+    #if it is the first time you use plotly, you need to register for a key
+    #and run the following line to create the credential file
+    # plotly.tools.set_credentials_file(username='AnnaVM', api_key='****')
+
+    # define the path to the credentials (for NYT API)
+    path_to_cred_file = '../../credentials/credentials.yml'
+
+    # retrieve the information from the command line
+    # for ex: $ python NYT_api.py 'Donald Trump' 1999 2015
+    parser = argparse.ArgumentParser(description='Get the evolution of popularity over time')
+    parser.add_argument('query_term', metavar='q', type=str, nargs='+',
+                        help='a string used as the search term for the query')
+    parser.add_argument('start_year', metavar='year_range_start', type=int,
+                        help='the year as INT that marks the earliest year queried')
+
+    parser.add_argument('end_year', metavar='year_range_end', type=int,
+                        help='the year as INT that marks the latest year queried')
+
+    args = parser.parse_args()
+
+    #search parameters
+    terms = args.query_term[0]
+    year_start = args.start_year
+    year_end = args.end_year
+
     print ('getting the data from NYT API')
-    dict_hits, d_keywords = wraper_function_data(2005, 2016, 'Terrorism')
+    dict_hits, d_keywords = wraper_function_data(year_start, year_end, terms)
     print ('making the wordclouds')
     d_linked_keywords = handle_multiple_words(d_keywords)
     dict_figs = produce_wordclouds(d_linked_keywords, plot_option=False)
     dict_str = save_images_as_str(dict_figs)
     print('making the bar chart')
-    url = plotly_url(2005, 2015, dict_hits)
+    url = plotly_url(year_start, year_end, dict_hits)
     print ('preparing files')
-    writing_js_file(dict_str, 'main_3.js')
-    writing_html_file(url, 'main_3.js', 'index_3.html')
+    writing_js_file(dict_str, 'main.js')
+    writing_html_file(url, 'main.js', 'index.html')
 
     print ('in order to have the js execute, run the html on a local server')
     print ('command in terminal $python -m SimpleHTTPServer')
