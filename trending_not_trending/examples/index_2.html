@@ -1,0 +1,34 @@
+
+    <!DOCTYPE html>>
+    <style>
+    /* http://stackoverflow.com/questions/11555809/image-overhead-iframe */
+    iframe{
+      width: 1000px;
+      height: 600px;
+      border : none;
+      z-index: 2;
+    }
+
+    img{
+      position: absolute;
+      left: 400px;
+      top: 130px;
+      z-index: 3;
+      border : none;
+      max-width: 400px;
+      max-height: 300px;
+      align: "middle";
+    }
+    </style>
+    <body>
+
+    <iframe id="plot" src="https://plot.ly/~AnnaVM/27" seamless></iframe>
+
+    <!-- http://stackoverflow.com/questions/11555809/image-overhead-iframe -->
+    <img id="hover-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
+
+    <script src='main_2.js'></script>
+
+    </body>
+
+    
