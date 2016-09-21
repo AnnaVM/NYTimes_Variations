@@ -1,5 +1,5 @@
 # NYTimes_Variations
-Using the New York Time resources (API, corpus...) in various settings
+This repository contains various small data science project/python programs based on  the New York Time resources (API, corpus...) to answer a general question and produce a visual overview/tool. The first project looks into using APIs ('Trending or not Trending'). The second project will cover Topic Modeling with NY Times corpus.
 
 WORK IN PROGRESS
 
@@ -33,6 +33,8 @@ Screenshot: ![Screenshot of example_0][ex_0]
 
 [ex_0]: https://github.com/AnnaVM/NYTimes_Variations/blob/master/trending_not_trending/images/plotly_Data_Science.png "Screenshot for the interactive bar graph for the trend in search term Data Science from 2010 to 2016"
 
-## NLP theme extraction
+## Topic Modeling
 
 -- coming up
+
+*Resource:* New York Times corpus
