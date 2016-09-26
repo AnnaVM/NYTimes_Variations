@@ -28,7 +28,7 @@ command line: `$ python NYT_api_advanced 'Data Science' 2010 2016`
 
 Page: https://annavm.github.io/NYTimes_Variations/trending_not_trending/example_0/
 
-Screencast: ![dashboard demo](https://github.com/AnnaVM/NYTimes_Variations/blob/master/trending_not_trending/example_1/Dashboard_Demo_DataScience.gif "Dashboard demo for Data Science query")
+Screencast: ![dashboard demo](https://github.com/AnnaVM/NYTimes_Variations/blob/master/trending_not_trending/example_0/Dashboard_Demo_DataScience.gif "Dashboard demo for Data Science query")
 
 Screenshot: ![Screenshot of example_0][ex_0]
 
