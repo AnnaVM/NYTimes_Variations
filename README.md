@@ -1,5 +1,5 @@
 # NYTimes_Variations
-This repository contains various small data science project/python programs based on  the New York Time resources (API, corpus...) to answer a general question and produce a visual overview/tool. The first project looks into using APIs ('Trending or not Trending'). The second project will cover Topic Modeling with NY Times corpus.
+This repository contains various small data science project/python programs based on  the New York Time resources (API) and corpus of other news aricles to answer a general question and produce a visual overview/tool. The first project looks into using APIs ('Trending or not Trending'). The second project will cover Topic Modeling with the 20 newsgroup dataset.
 
 WORK IN PROGRESS
 
@@ -33,8 +33,10 @@ Screenshot: ![Screenshot of example_0][ex_0]
 
 [ex_0]: https://github.com/AnnaVM/NYTimes_Variations/blob/master/trending_not_trending/images/plotly_Data_Science.png "Screenshot for the interactive bar graph for the trend in search term Data Science from 2010 to 2016"
 
-## Topic Modeling
+## So, what's your topic? A Topic Modeling project
 
 -- coming up
 
-*Resource:* New York Times corpus
+*Resource:*  20 newsgroups dataset (New York Times corpus is behind a paywall for me)
+
+This dataset, available in scikit-learn, comprises around 18000 newsgroups posts on 20 topics.
