@@ -13,8 +13,8 @@ $python vectorizer_script.py 100
 
 This generates .csv files of top words and their counts/tfidf value, as well as a small dashboard to explore the output for that document.
 
-Inline-style:
-![alt text](https://github.com/AnnaVM/NYTimes_Variations/tree/master/what_topic/data/document_13.gif "Dashboard demo for document 13")
+Dashboard demo:
+![alt text](https://github.com/AnnaVM/NYTimes_Variations/blob/master/what_topic/data/document_13.gif "Dashboard demo for document 13")
 
-link:
+Link to the Dashboard:
 https://annavm.github.io/NYTimes_Variations/what_topic/data/document_100_dashboard.html
