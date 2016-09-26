@@ -17,6 +17,17 @@ To investigate the graph on your local computer, you will need a local server (a
 
 ## Examples
 
+#### Popularity of term 'Donald Trump' from 2005-2015
+
+command line: `$ python NYT_api_advanced 'Donald Trump' 2005 2015`
+
+Page: https://annavm.github.io/NYTimes_Variations/trending_not_trending/example_1/
+
+Screencast: ![dashboard demo](https://github.com/AnnaVM/NYTimes_Variations/blob/master/trending_not_trending/example_1/Dashboard_Demo_DonaldTrump.gif "Dashboard demo for Donald Trump query")
+
+Screenshot: ![Screenshot of example_1][ex_1]
+
+
 #### Popularity of term 'Data Science' from 2010-2016
 
 command line: `$ python NYT_api_advanced 'Data Science' 2010 2016`
@@ -24,14 +35,6 @@ command line: `$ python NYT_api_advanced 'Data Science' 2010 2016`
 Page: https://annavm.github.io/NYTimes_Variations/trending_not_trending/example_0/
 
 Screenshot: ![Screenshot of example_0][ex_0]
-
-#### Popularity of term 'Donald Trump' from 2005-2015
-
-command line: `$ python NYT_api_advanced 'Donald Trump' 2005 2015`
-
-Page: https://annavm.github.io/NYTimes_Variations/trending_not_trending/example_1/
-
-Screenshot: ![Screenshot of example_1][ex_1]
 
 
 #### Popularity of term 'Terrorism' from 2005-2015
