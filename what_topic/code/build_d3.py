@@ -61,11 +61,15 @@ def d3js_html(html_filename, csv_filename, document_num):
     ########## creating the head - with d3js source
     head = '''
        <head>
-         <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>'''
+        <!-- Bootstrap-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <!-- D3js-->
+        <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>'''
 
     ########## creating the style
     style = '''
-         <style>
+      <style>
 
          .chart rect {
            fill: steelblue;
@@ -77,35 +81,43 @@ def d3js_html(html_filename, csv_filename, document_num):
            text-anchor: end;
          }
 
-    .chart rect {
-      fill:  #0072c8;
-    }
+        .chart rect {
+          fill:  #0072c8;
+        }
 
-    .chart rect:hover {
-      fill: #968C83;
-    }
+        .chart rect:hover {
+          fill: #968C83;
+        }
 
-    .y path, .y stroke, .y line {
-      display: none;
-    }
+        .y path, .y stroke, .y line {
+          display: none;
+        }
 
-    .x path, .x stroke {
-      display: none;
-      shape-rendering: crispEdges;
-    }
+        .x path, .x stroke {
+          display: none;
+          shape-rendering: crispEdges;
+        }
 
-    .y text {
-      font-family: 'Open Sans';
-      font-size: 14px;
-      text-anchor: middle;
-    }
+        .y text {
+          font-family: 'Open Sans';
+          font-size: 14px;
+          text-anchor: middle;
+        }
 
-    .x text {
-      font-family: 'Open Sans';
-      font-size: 10px;
-      text-anchor: middle;
-    }
-    </style>'''
+        .x text {
+          font-family: 'Open Sans';
+          font-size: 10px;
+          text-anchor: middle;
+        }
+
+            .container{
+              margin-left: 1.5em;
+            }
+
+            svg {
+              margin-left: 3em;
+            }
+      </style>'''
 
     ########## creating the script with the draw function
     script ='''
@@ -164,23 +176,49 @@ def d3js_html(html_filename, csv_filename, document_num):
     #####################################################################
     body_prior_loading_data = '''
        <body>
+           <div>
+             <h3>Hello!</h3>
+             <p> Use this dashboard to compare top words for <i>document '''+ str(document_num) +''' </i> using different
+              feature extraction methods!</p>
+           </div>
 
-        <p> ''' + 'document' + str(document_num) + '''</p>
 
-         <h1>Select Vectorizer:</h1>
-         <input type="button" onclick="changePage(1);" value="Count Vectorizer">
-         <input type="button" onclick="changePage(2);" value="Count Vectorizer with stop words">
-         <input type="button" onclick="changePage(3);" value="Tfidf Vectorizer">
 
-         <p> Bar chart with the most frequent word (word --> value) </p>
+       <div class='container'>
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Exploring document '''+ str(document_num) +'''</h3>
+          </div>
+
+          <div class="panel-body">
+
+            <b>Select the Vectorizer:</b>
+            <input type="button" onclick="changePage(1);" value="Count Vectorizer">
+            <input type="button" onclick="changePage(2);" value="Count Vectorizer with stop words">
+            <input type="button" onclick="changePage(3);" value="Tfidf Vectorizer">
+            <p> The texts were all lowercased. The vectorizers transform the text documents into
+              vectors.
+              <ul>
+                <li>The Count Vectorizer transforms into the document into a vector of counts.</li>
+                <li>The Count Vectorizer with stopwords removes stopwords before transforming the document into a vector of counts.</li>
+                <li>The TF-IDF Vectorizer takes into account the frequency of the word in the document as well as its rarity in all the other documents in order to calculate its importance. </li>
+              </ul>
+              </p>
+
+          </div>
+        </div>
+
+
+         <p> Bar chart with the most important words (word --> value) </p>
+
     '''
 
     body_loading_data = '''
-        <script>
-        d3.csv("''' + csv_filename + '''", draw);
+          <script>
+          d3.csv("''' + csv_filename + '''", draw);
 
-        </script>
-
+          </script>
+        </div>
        </body>
      </html>'''
 

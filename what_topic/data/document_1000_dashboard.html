@@ -59,9 +59,9 @@
     <script>
     function changePage(pageNum) {
           d3.select('svg').remove();
-          if (pageNum == 1) { d3.csv("document_13_data_1.csv", draw); }
-          if (pageNum == 2) { d3.csv("document_13_data_2.csv", draw); }
-          if (pageNum == 3) { d3.csv("document_13_data_3.csv", draw); }
+          if (pageNum == 1) { d3.csv("document_1000_data_1.csv", draw); }
+          if (pageNum == 2) { d3.csv("document_1000_data_2.csv", draw); }
+          if (pageNum == 3) { d3.csv("document_1000_data_3.csv", draw); }
       }
 
     function draw(data){
@@ -106,7 +106,7 @@
        <body>
            <div>
              <h3>Hello!</h3>
-             <p> Use this dashboard to compare top words for <i>document 13 </i> using different
+             <p> Use this dashboard to compare top words for <i>document 1000 </i> using different
               feature extraction methods!</p>
            </div>
 
@@ -115,7 +115,7 @@
        <div class='container'>
         <div class="panel panel-primary">
           <div class="panel-heading">
-            <h3 class="panel-title">Exploring document 13</h3>
+            <h3 class="panel-title">Exploring document 1000</h3>
           </div>
 
           <div class="panel-body">
@@ -141,7 +141,7 @@
 
     
           <script>
-          d3.csv("document_13_data_1.csv", draw);
+          d3.csv("document_1000_data_1.csv", draw);
 
           </script>
         </div>

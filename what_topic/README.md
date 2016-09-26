@@ -5,6 +5,13 @@
 
 # Investigating vectorizers
 
-$python vectorizer_script.py 100
+Usage: run the script and choose the document to investigate, thanks to its number, in the example we are looking at 100.
 
-link
+```code
+$python vectorizer_script.py 100
+```
+
+This generates .csv files of top words and their counts/tfidf value, as well as a small dashboard to explore the output for that document.
+
+link:
+https://annavm.github.io/NYTimes_Variations/what_topic/data/document_100_dashboard.html
