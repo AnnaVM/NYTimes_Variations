@@ -30,7 +30,7 @@ $python similar_documents_script.py
 This generates .csv files of top words and their counts/tfidf value, as well as a small dashboard to explore the output for that document.
 
 Dashboard demo:
-![dashboard demo](https://github.com/AnnaVM/NYTimes_Variations/blob/master/what_topic/data/document_13.gif "Dashboard demo for document 13")
+![dashboard demo](https://github.com/AnnaVM/NYTimes_Variations/blob/master/what_topic/example_1/similar_docs_dashboard.gif "Dashboard demo for document 13")
 
 Link to the Dashboard:
 https://annavm.github.io/NYTimes_Variations/what_topic/example_1/dashboard.html
