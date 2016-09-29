@@ -37,8 +37,17 @@ Screenshot: ![Screenshot of example_0][ex_0]
 
 ## So, what's your topic? A Topic Modeling project
 
--- coming up
+-- in construction
 
 *Resource:*  20 newsgroups dataset (New York Times corpus is behind a paywall for me)
 
 This dataset, available in scikit-learn, comprises around 18000 newsgroups posts on 20 topics.
+
+- I first look into the impact of the vectorization scheme on the document representation, with a simple bar chart based interactive interface for investigation.
+- I then compute the most similar documents in the corpus for a given document, and as a sanity check, I investigate the categories, or labels, associate with those documents. A D3js dashboard sums up the information.
+
+Dashboard demo:
+![dashboard demo](https://github.com/AnnaVM/NYTimes_Variations/blob/master/what_topic/example_1/similar_docs_dashboard.gif "Dashboard demo for document 13")
+
+Link to the Dashboard:
+https://annavm.github.io/NYTimes_Variations/what_topic/example_1/dashboard.html
