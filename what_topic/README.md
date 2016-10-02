@@ -34,3 +34,15 @@ Dashboard demo:
 
 Link to the Dashboard:
 https://annavm.github.io/NYTimes_Variations/what_topic/example_1/dashboard.html
+
+# Investigating latent topics
+
+NMF decomposition transforms the vector-matrix (V) into a product of matrices (V = WH). This section explores the information in H, the next will focus on W. The dimensions of W and H are fixed by those of the vector matrix V and by the number of components we set for the matrix decomposition. H links the number of latent topics (number of components chosen) to the words in the vocabulary developped by TfIDF algorithm. A human user can explore the words in each topic to set a global label for the latent topic discovered. A Jupyter notebook 'Explore_topics.ipynb' allows you to do just that. This is where the magic of matrix decomposition for topic discovery really kicks in!
+
+Exploration demo:
+![ipynb demo](https://github.com/AnnaVM/NYTimes_Variations/blob/master/what_topic/number_topics/set_number_topics.gif "Demo for looking at topics for varying number of components")
+
+If you want to have access to the code, or run the script yourself:
+```code
+$python top_modeling_script.py
+```
