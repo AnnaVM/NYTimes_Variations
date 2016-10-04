@@ -47,17 +47,26 @@ If you want to have access to the code, or run the script yourself:
 $python top_modeling_script.py
 ```
 
-for instance for number of components:
+Here are some latent topics that appear as the number of components increases:
 
-[u'space' u'nasa' u'orbit' u'program' u'launch' u'shuttl' u'data'
- u'develop' u'scienc' u'research']
+- <b>science</b>: [space, nasa, orbit, program, launch, shuttl, data, develop, scienc, research]
+- <b>bike</b>: [bike, ride, motorcycl, dod, rider, helmet, mile, look, honda, buy]
+- <b>car</b>: [car, engin, dealer, driver, mile, speed, look, model, owner, buy]
+- <b>guns</b>: [gun, law, right, govern, peopl, state, crime, weapon, crimin, firearm]
 
- [u'bike' u'ride' u'motorcycl' u'dod' u'rider' u'helmet' u'mile' u'look'
- u'honda' u'buy']
 
- [u'car' u'engin' u'dealer' u'driver' u'mile' u'speed' u'look' u'model'
- u'owner' u'buy']
-What label do you want to set? cars
-[u'gun' u'law' u'right' u'govern' u'peopl' u'state' u'crime' u'weapon'
- u'crimin' u'firearm']
-What label do you want to set? guns
+# Determining the latent topics characterizing documents
+
+
+Dashboard demo:
+![dashboard demo](https://github.com/AnnaVM/NYTimes_Variations/blob/master/what_topic/20topics/latent_topic_demo.gif "Demo - looking at latent topics for documents")
+
+Link to the Dashboard:
+https://annavm.github.io/NYTimes_Variations/what_topic/20topics/dashboard.html
+
+
+If you want to have access to the code, or run the script yourself:
+
+```code
+$python latent_topic_script.py
+```
