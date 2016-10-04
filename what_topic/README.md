@@ -46,3 +46,18 @@ If you want to have access to the code, or run the script yourself:
 ```code
 $python top_modeling_script.py
 ```
+
+for instance for number of components:
+
+[u'space' u'nasa' u'orbit' u'program' u'launch' u'shuttl' u'data'
+ u'develop' u'scienc' u'research']
+
+ [u'bike' u'ride' u'motorcycl' u'dod' u'rider' u'helmet' u'mile' u'look'
+ u'honda' u'buy']
+
+ [u'car' u'engin' u'dealer' u'driver' u'mile' u'speed' u'look' u'model'
+ u'owner' u'buy']
+What label do you want to set? cars
+[u'gun' u'law' u'right' u'govern' u'peopl' u'state' u'crime' u'weapon'
+ u'crimin' u'firearm']
+What label do you want to set? guns

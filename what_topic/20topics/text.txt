@@ -1,0 +1,82 @@
+
+<p id="doc_label0">rec.autos</p>
+<p id="doc0">I was wondering if anyone out there could enlighten me on this car I saw
+the other day. It was a 2-door sports car, looked to be from the late 60s/
+early 70s. It was called a Bricklin. The doors were really small. In addition,
+the front bumper was separate from the rest of the body. This is 
+all I know. If anyone can tellme a model name, engine specs, years
+of production, where this car is made, history, or whatever info you
+have on this funky looking car, please e-mail.</p>
+<p id="doc_label10">rec.motorcycles</p>
+<p id="doc10">I have a line on a Ducati 900GTS 1978 model with 17k on the clock.  Runs
+very well, paint is the bronze/brown/orange faded out, leaks a bit of oil
+and pops out of 1st with hard accel.  The shop will fix trans and oil 
+leak.  They sold the bike to the 1 and only owner.  They want $3495, and
+I am thinking more like $3K.  Any opinions out there?  Please email me.
+Thanks.  It would be a nice stable mate to the Beemer.  Then I'll get
+a jap bike and call myself Axis Motors!
+
+-- 
+-----------------------------------------------------------------------
+"Tuba" (Irwin)      "I honk therefore I am"     CompuTrac-Richardson,Tx
+irwin@cmptrc.lonestar.org    DoD #0826          (R75/6)</p>
+<p id="doc_label100">misc.forsale</p>
+<p id="doc100">1.  Software publishing SuperBase 4 windows v.1.3           --->$80
+
+2.  OCR System ReadRight v.3.1 for Windows                  --->$65
+
+3.  OCR System ReadRight  v.2.01 for DOS                    --->$65
+
+4.  Unregistered Zortech 32 bit C++ Compiler v.3.1          --->$ 250
+     with Multiscope windows Debugger,
+     WhiteWater Resource Toolkit, Library Source Code
+
+5.  Glockenspiel/ImageSoft Commonview 2 Windows
+     Applications Framework for Borland C++                 --->$70
+
+6.  Spontaneous Assembly Library With Source Code           --->$50
+
+7.  Microsoft Macro Assembly 6.0                            --->$50
+
+8.  Microsoft Windows v.3.1 SDK Documentation               --->$125
+
+9.  Microsoft FoxPro V.2.0                                  --->$75
+
+10.  WordPerfect 5.0 Developer's Toolkit                    --->$20
+
+11.  Kedwell Software DataBoss v.3.5 C Code Generator       --->$100
+
+12.  Kedwell InstallBoss v.2.0 Installation Generator       --->$35
+
+13.  Liant Software C++/Views v.2.1
+       Windows Application Framework with Source Code       --->$195
+
+14.  IBM OS/2 2.0 & Developer's Toolkit                     --->$95
+
+15.  CBTree DOS/Windows Library with Source Code            --->$120
+
+16.  Symantec TimeLine for Windows                          --->$90
+
+17.  TimeSlip TimeSheet Professional for Windows            --->$30</p>
+<p id="doc_label200">talk.politics.guns</p>
+<p id="doc200">
+I first read and consulted rec.guns in the summer of 1991.  I
+just purchased my first firearm in early March of this year.</p>
+<p id="doc_label300">rec.sport.hockey</p>
+<p id="doc300">
+I was at a Cincinnati Cyclones game a year ago when the local country
+station sponsored a kazoo giveaway.  After a particularly bad call by the
+underexperienced ECHL ref, it was Kazoostorm time down on the ice.  I
+thought this was a pathetic display by the fans, but they were rightfully
+unhappy.</p>
+<p id="doc_label500">comp.os.ms-windows.misc</p>
+<p id="doc500">
+I got one from Microsoft tech support.
+</p>
+<p id="doc_label1000">comp.os.ms-windows.misc</p>
+<p id="doc1000">Anybody seen mouse cursor distortion running the Diamond 1024x768x256 driver?
+Sorry, don't know the version of the driver (no indication in the menus) but it's a recently
+delivered Gateway system.  Am going to try the latest drivers from Diamond BBS but wondered
+if anyone else had seen this.
+
+post or email</p>
