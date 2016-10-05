@@ -142,7 +142,7 @@ def top_latent_topics(W, list_topics, option_100=True):
     return dic
 
 def write_data_file(doc_num, d, d_top_words):
-    with open('../20topics/data/doc'+ str(doc_num)+'_data.csv','w') as f:
+    with open('../20topics/doc'+ str(doc_num)+'_data.csv','w') as f:
         string = 'name,value,words'
         for topic, value in d[doc_num]:
             string += '\n' + topic + ',' + str(round(value)/100.) + ',' + str(d_top_words[topic])
@@ -162,7 +162,7 @@ def page_num_function(doc_num):
     makes an extra entry to the changePage javascript function'''
     entry = '''
            if (pageNum == ''' + str(doc_num) + ''') {
-           var csv_document = "data/doc'''+str(doc_num)+'''_data.csv";
+           var csv_document = "doc'''+str(doc_num)+'''_data.csv";
            var text_selection = "#tempDiv #doc'''+str(doc_num)+'''";
            var label_selection = "#tempDiv #doc_label'''+str(doc_num)+'''";
            var exploring = "Exploring document '''+str(doc_num)+'''";
@@ -187,6 +187,10 @@ def write_html_dashboard(list_doc_numbers):
 <head>
   <!-- Bootstrap-->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+  <!-- D3js-->
+      <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
 
   <!-- Style-->
   <style>
@@ -356,9 +360,6 @@ def write_html_dashboard(list_doc_numbers):
   </div>
 
 
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
-
 </body>'''
     string = head + pageNumFunction + drawFunction+ body + buttons + end_body
     with open('../20topics/dashboard.html','w') as f:
@@ -367,6 +368,7 @@ def write_html_dashboard(list_doc_numbers):
 if __name__ == '__main__':
 
     #########  GET and CLEAN THE DATA
+    print('Get data')
     newsgroups_train = fetch_20newsgroups(subset='train',
                                           remove=('headers', 'footers', 'quotes'))
     data = newsgroups_train.data
@@ -376,9 +378,11 @@ if __name__ == '__main__':
     snowball = SnowballStemmer('english')
     regex = re.compile('[%s]' % re.escape(punctuation))
 
+    print('Clean data')
     clean_data_snow = map(lambda doc: clean_stemmed_doc(doc, regex, snowball), data)
 
     #########  From TEXT to VECTOR
+    print('Apply vectorizer')
     tfidf_vectorizer = TfidfVectorizer(stop_words='english', max_features=5000)
 
     sparse_vectors = tfidf_vectorizer.fit_transform(clean_data_snow)
@@ -386,6 +390,7 @@ if __name__ == '__main__':
     words = tfidf_vectorizer.get_feature_names()
 
     ##########  Define LATENT TOPICS
+    print('Define latent topics')
     n_components = 20
     W,H,nmf = topic_modeling(n_components, vectors)
     print '-'*20
@@ -414,6 +419,7 @@ if __name__ == '__main__':
     d_top_words['others'] = ' '
 
     ##########  Making the DASHBOARD
+    print('Making the dashboard')
     list_doc_numbers = [0,10,100, 200, 300, 500, 1000]
     for doc_num in list_doc_numbers:
         write_data_file(doc_num, d, d_top_words)
