@@ -60,5 +60,9 @@ Dashboard demo:
 Link to the Dashboard:
 https://annavm.github.io/NYTimes_Variations/what_topic/20topics/dashboard.html
 
-- a visual summary of repartition of documents between latent topics and original categories, for instance (car --> rec.autos and rec.motocycles), (israel --> talk.politics.mideast), (space --> sci.space), (sports --> rec.sport.hockey and rec.sport.baseball)...
+- a visual summary of repartition of documents between latent topics and original categories, for instance
+  - car --> rec.autos and rec.motocycles,
+  - israel --> talk.politics.mideast,
+  - space --> sci.space,
+  - sports --> rec.sport.hockey and rec.sport.baseball...
 ![20_topics](https://github.com/AnnaVM/NYTimes_Variations/blob/master/what_topic/images/20_components.png)

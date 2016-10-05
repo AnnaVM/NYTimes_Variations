@@ -89,4 +89,4 @@ A first heatmap is obtained for 20 latent topics (20 components in the matrix fa
 A second heatmap, for only 10 latent topics, allows more general topics to be defined.
 ![10_topics](https://github.com/AnnaVM/NYTimes_Variations/blob/master/what_topic/images/10_components.png)
 
-A Jupyter notebook [Heatmap.ipynb](https://github.com/AnnaVM/NYTimes_Variations/blob/master/what_topic/code/Heatmap.ipynb)
+A Jupyter notebook [Heatmap.ipynb](https://github.com/AnnaVM/NYTimes_Variations/blob/master/what_topic/code/Heatmap.ipynb) allows the user to design heatmaps for the desired number of latent topics.
