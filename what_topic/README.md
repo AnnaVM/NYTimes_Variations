@@ -1,6 +1,6 @@
 # So, what's your topic?
 
-**AIM:** Investigating the impact of various scikit-learn feature extraction methods (get the counts, remove stopwords, apply tfidf, lemmatize). Model the topics in the news post and be able to predict the topics of previously unlabeled posts.
+**AIM:** Investigating the impact of various scikit-learn feature extraction methods (get the counts, remove stopwords, apply tfidf, lemmatize). Modeling the topics in the documents (unsupervised learning - matrix factorization).
 
 
 # Investigating vectorizers
@@ -57,6 +57,7 @@ Here are some latent topics that appear as the number of components increases:
 
 # Determining the latent topics characterizing documents
 
+Looking at the W matrix in V = WH matrix factorization gives information as to which latent topics are important for each document. I translate this information into relative percentage importance, disregarding topics that account for less that 10% of the total importance. To see how these latent topics correlate back to the original file, the actual text is displayed as well as the category it was originally from.
 
 Dashboard demo:
 ![dashboard demo](https://github.com/AnnaVM/NYTimes_Variations/blob/master/what_topic/20topics/latent_topic_demo.gif "Demo - looking at latent topics for documents")
@@ -70,3 +71,22 @@ If you want to have access to the code, or run the script yourself:
 ```code
 $python latent_topic_script.py
 ```
+# Latent topics and categories
+
+In order to compare latent topics to original categories the documents belonged to, I designed a heatmap that shows the graphical representation of documents repartition between categories and latent topics.
+
+A first heatmap is obtained for 20 latent topics (20 components in the matrix factorization), as a sanity check. Some clear correlations reinforce the validity of the latent topics.
+![20_topics](https://github.com/AnnaVM/NYTimes_Variations/blob/master/what_topic/images/20_components.png)
+- car: rec.autos and rec.motocycles
+- israel: talk.politics.mideast
+- space: sci.space
+- sales: misc.forsale
+- sports: rec.sport.hockey and rec.sport.baseball
+- religion: mainly soc.religion.christian and to a smaller extend alt.atheism and talk.religion.misc
+- computer security: sci.crypt
+- opinion: evenly partitioned across categories
+
+A second heatmap, for only 10 latent topics, allows more general topics to be defined.
+![10_topics](https://github.com/AnnaVM/NYTimes_Variations/blob/master/what_topic/images/10_components.png)
+
+A Jupyter notebook [Heatmap.ipynb](https://github.com/AnnaVM/NYTimes_Variations/blob/master/what_topic/code/Heatmap.ipynb)

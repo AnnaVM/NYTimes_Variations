@@ -51,3 +51,14 @@ Dashboard demo:
 
 Link to the Dashboard:
 https://annavm.github.io/NYTimes_Variations/what_topic/example_1/dashboard.html
+
+- I determine the latent topics thanks to NMF decomposition, and investigate the latent topics for each document, with a dashboard display giving a bar graph view to the importance of latent topics and an information panel giving the category and the text of the actual file.
+
+Dashboard demo:
+![dashboard demo](https://github.com/AnnaVM/NYTimes_Variations/blob/master/what_topic/20topics/latent_topic_demo.gif "Demo - looking at latent topics for documents")
+
+Link to the Dashboard:
+https://annavm.github.io/NYTimes_Variations/what_topic/20topics/dashboard.html
+
+- a visual summary of repartition of documents between latent topics and original categories, for instance (car --> rec.autos and rec.motocycles), (israel --> talk.politics.mideast), (space --> sci.space), (sports --> rec.sport.hockey and rec.sport.baseball)...
+![20_topics](https://github.com/AnnaVM/NYTimes_Variations/blob/master/what_topic/images/20_components.png)
